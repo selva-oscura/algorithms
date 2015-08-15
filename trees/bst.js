@@ -1,13 +1,17 @@
+//create a Node
 var Node = function Node(val){
 	this.value = val;
 	this.right = null;
 	this.left = null;
 }
 
+//create a Binary Search Tree (BST)
 var BST = function BST (){
 	this.root = null;
 }
 
+
+//add nodes to the BST
 BST.prototype.add = function(val){
 	var node = new Node(val);
 	if(this.root == null){
@@ -34,23 +38,55 @@ BST.prototype.add = function(val){
 	}
 }
 
-BST.prototype.read = function(root){
+//read BST in order
+BST.prototype.readInOrder = function(root){
 	if(root==undefined){
 		var root = this.root;
 	}
 	if(root.left!=null){
-		this.read(root.left);
+		this.readInOrder(root.left);
 	}
 	console.log(root.value);
 	if(root.right!=null){
-		this.read(root.right);
+		this.readInOrder(root.right);
 	}
 }
 
+//return node with value K from BST
+BST.prototype.returnNodeK = function(k){
+	var current = this.root;
+	while(current!=null){
+		if(current.value === k){
+			// console.log(current)
+			return current;
+		}else if(current.left!=null & current.value>k){
+			current = current.left;
+		}else{
+			current = current.right;
+		}
+	}
+	var output=k + " not found";
+	// console.log(output);
+	return output;
+}
+
+
+// creating  a bst with values 3,6,1,7,23,18
+console.log("creating a bst with values 3,6,1,7,23,18");
 var arr = [3,6,1,7,23,18];
 var myBst = new BST;
 for(var i=0; i<arr.length; i++){
 	myBst.add(arr[i]);
 }
-myBst.read();
 
+// reading bst in order (left, current, right), producing the values in sorted order
+console.log('reading bst in order (left, current, right), producing the values in sorted order');
+myBst.readInOrder();
+
+//returning node with value 3 from the bst
+console.log('returning node with value 3 from the bst')
+console.log(myBst.returnNodeK(3));
+
+//returning node with value 4 from the bst
+console.log('returning node with value 4 from the bst')
+console.log(myBst.returnNodeK(4));
