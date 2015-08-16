@@ -37,7 +37,7 @@ BST.prototype = {
 			}
 		}
 	},
-	//read BST in order
+	//read BST in order (L, C, R)
 	readInOrder: function(root){
 		if(root==undefined){
 			var root = this.root;
@@ -50,7 +50,7 @@ BST.prototype = {
 			this.readInOrder(root.right);
 		}
 	},
-	//read BST in PreOrder
+	//read BST in PreOrder (C, L, R)
 	readPreOrder:function(root){
 		if(root==undefined){
 			var root = this.root;
@@ -62,6 +62,20 @@ BST.prototype = {
 		if(root.right!=null){
 			this.readPreOrder(root.right);
 		}
+
+	},
+	//read BST in PreOrder (C, L, R)
+	readPostOrder:function(root){
+		if(root==undefined){
+			var root = this.root;
+		}
+		if(root.left!=null){
+			this.readPostOrder(root.left);
+		}
+		if(root.right!=null){
+			this.readPostOrder(root.right);
+		}
+		console.log(root.value);
 
 	},
 	//return node with value K from BST
@@ -94,11 +108,32 @@ for(var i=0; i<arr.length; i++){
 	myBst.add(arr[i]);
 }
 
+
 // reading bst in order (left, current, right), producing the values in sorted order
 console.log('\nreading bst inOrder (left, current, right), producing the values in sorted order');
 myBst.readInOrder();
 console.log('\nreading bst preOrder (current, left, right)');
 myBst.readPreOrder();
+console.log('\nreading bst postOrder (left, right, current)');
+myBst.readPostOrder();
+
+
+// creating  a bst with values 3,6,1,7,23,18
+console.log("creating a bst with values F,B,A,D,C,E,G,I,H");
+var arr2 = ["F", "B", "A", "D", "C", "E", "G", "I", "H"];
+var myBst2 = new BST;
+for(var i=0; i<arr2.length; i++){
+	myBst2.add(arr2[i]);
+}
+// reading bst in order (left, current, right), producing the values in sorted order
+console.log('\nreading bst inOrder (left, current, right), producing the values in sorted order');
+myBst2.readInOrder();
+console.log('\nreading bst preOrder (current, left, right)');
+myBst2.readPreOrder();
+console.log('\nreading bst postOrder (left, right, current)');
+myBst2.readPostOrder();
+
+
 
 //returning node with value 3 from the bst
 console.log('\nreturning node with value 3 from the bst')
