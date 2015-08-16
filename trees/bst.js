@@ -10,7 +10,6 @@ var BST = function BST (){
 	this.root = null;
 }
 
-
 //add nodes to the BST
 BST.prototype = {
 	add: function(val){
@@ -51,6 +50,20 @@ BST.prototype = {
 			this.readInOrder(root.right);
 		}
 	},
+	//read BST in PreOrder
+	readPreOrder:function(root){
+		if(root==undefined){
+			var root = this.root;
+		}
+		console.log(root.value);
+		if(root.left!=null){
+			this.readPreOrder(root.left);
+		}
+		if(root.right!=null){
+			this.readPreOrder(root.right);
+		}
+
+	},
 	//return node with value K from BST
 	returnNodeK: function(k){
 		var current = this.root;
@@ -82,13 +95,15 @@ for(var i=0; i<arr.length; i++){
 }
 
 // reading bst in order (left, current, right), producing the values in sorted order
-console.log('reading bst in order (left, current, right), producing the values in sorted order');
+console.log('\nreading bst inOrder (left, current, right), producing the values in sorted order');
 myBst.readInOrder();
+console.log('\nreading bst preOrder (current, left, right)');
+myBst.readPreOrder();
 
 //returning node with value 3 from the bst
-console.log('returning node with value 3 from the bst')
+console.log('\nreturning node with value 3 from the bst')
 console.log(myBst.returnNodeK(3));
 
 //returning node with value 4 from the bst
-console.log('returning node with value 4 from the bst')
+console.log('\nreturning node with value 4 from the bst')
 console.log(myBst.returnNodeK(4));
