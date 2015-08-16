@@ -12,63 +12,65 @@ var BST = function BST (){
 
 
 //add nodes to the BST
-BST.prototype.add = function(val){
-	var node = new Node(val);
-	if(this.root == null){
-		this.root = node;
-	}else{
-		var current = this.root;
-		while(current != null){
-			if(current.value<node.value){
-				if(current.right == null){
-					current.right = node;
-					return this;
+BST.prototype = {
+	add: function(val){
+		var node = new Node(val);
+		if(this.root == null){
+			this.root = node;
+		}else{
+			var current = this.root;
+			while(current != null){
+				if(current.value<node.value){
+					if(current.right == null){
+						current.right = node;
+						return this;
+					}else{
+						current = current.right;
+					}
 				}else{
-					current = current.right;
-				}
-			}else{
-				if(current.left == null){
-					current.left = node;
-					return this;
-				}else{
-					current = current.left;
+					if(current.left == null){
+						current.left = node;
+						return this;
+					}else{
+						current = current.left;
+					}
 				}
 			}
 		}
-	}
-}
-
-//read BST in order
-BST.prototype.readInOrder = function(root){
-	if(root==undefined){
-		var root = this.root;
-	}
-	if(root.left!=null){
-		this.readInOrder(root.left);
-	}
-	console.log(root.value);
-	if(root.right!=null){
-		this.readInOrder(root.right);
-	}
-}
-
-//return node with value K from BST
-BST.prototype.returnNodeK = function(k){
-	var current = this.root;
-	while(current!=null){
-		if(current.value === k){
-			// console.log(current)
-			return current;
-		}else if(current.left!=null & current.value>k){
-			current = current.left;
-		}else{
-			current = current.right;
+	},
+	//read BST in order
+	readInOrder: function(root){
+		if(root==undefined){
+			var root = this.root;
 		}
+		if(root.left!=null){
+			this.readInOrder(root.left);
+		}
+		console.log(root.value);
+		if(root.right!=null){
+			this.readInOrder(root.right);
+		}
+	},
+	//return node with value K from BST
+	returnNodeK: function(k){
+		var current = this.root;
+		while(current!=null){
+			if(current.value === k){
+				// console.log(current)
+				return current;
+			}else if(current.left!=null & current.value>k){
+				current = current.left;
+			}else{
+				current = current.right;
+			}
+		}
+		var output=k + " not found";
+		// console.log(output);
+		return output;
 	}
-	var output=k + " not found";
-	// console.log(output);
-	return output;
 }
+
+
 
 
 // creating  a bst with values 3,6,1,7,23,18
