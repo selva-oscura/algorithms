@@ -2,7 +2,12 @@
 // Write a method the takes in a string and returns the pig latin equivalent. Pig Latin takes the first consonant, moves it to the end of the word and places “ay” at the end. If the string starts with a consonant do nothing. “pig” = “igpay”, “banana” = “ananabay”
 
 // simplePigLatinise shifts the first letter of the word to the end and adds 'ay' to the end of that word if the word is a consonant.  It does not alter words beginning with vowels.
-// Note: simplePigLatinise does not address some of the more complex ways in which Pig Latin is actually done, including the shifting of digraphs or trigraphs (e.g. th, sch) and not just single letters, shifting of capitalisation to the new start letter, and punctuation being treated as not part of the word albeit with mid-word punctuation (namely, apostrophes for abbreviations) remaining in place as part of the word.
+// Note: simplePigLatinise does not address some of the more complex ways in which Pig Latin is actually done, including 
+// 1a - the shifting of digraphs or trigraphs (e.g. th, sch) and not just single letters,
+// 1b - the potential for some consonants to act as vowels (e.g. y following another consonant)
+// 2 - shifting of capitalisation to the new start letter, and
+// 3 - punctuation being treated as not part of the word albeit with mid-word punctuation (namely, apostrophes for abbreviations) remaining in place as part of the word.
+
 var simplePigLatinise = function(string){
 	var output = [];
 	var input = string.split(" ");
@@ -20,8 +25,7 @@ var simplePigLatinise = function(string){
 		if(vowelCheck(input[i][0])){
 			output.push(input[i]);
 		}else{
-			var newWord = input[i].slice(1,input[i].length)+input[i][0]+"ay";
-			output.push(newWord);
+			output.push(input[i].slice(1,input[i].length)+input[i][0]+"ay");
 		}
 	}
 	return output.join(" ");
