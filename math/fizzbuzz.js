@@ -80,6 +80,21 @@ var fizzBuzz3 = function(numTrials){
 		// console.log(output);
 	}
 }
+var fizzBuzz4 = function(numTrials){
+	for(var i =0; i<=numTrials;i++){
+		var output = "";
+		if(i%3 === 0){
+			output+="Fizz";
+		}
+		if(i%5 === 0){
+			output+="Buzz";
+		}
+		if((i%3 !==5) && (i%5 !== 0)){
+			output = i;
+		}
+		// console.log(output);
+	}
+}
 
 
 // comparison for time taken by each of the four different fizzbuzz variants
@@ -97,11 +112,15 @@ var timeTrials = function(){
 	var start3 = new Date();
 	fizzBuzz3(numTrials);
 	var end3 = new Date();
+	var start4 = new Date();
+	fizzBuzz4(numTrials);
+	var end4 = new Date();
 	var output = {};
 	output.timetrial0 = end0 - start0;
 	output.timetrial1 = end1 - start1;
 	output.timetrial2 = end2 - start2;
 	output.timetrial3 = end3 - start3;
+	output.timetrial4 = end4 - start4;
 	return output;
 }
 console.log(timeTrials());
@@ -166,4 +185,64 @@ console.log(timeTrials());
 // The most time-consuming function had a few different possible explanations for how time-consuming it was
 // 	1 - it did not have the earlier bail-out of if()else if() because it relied up repeated if statements to build FizzBuzz from the Fizz and the Buzz, so it may have been more time-consuming because it tested each condition.
 // 	2 - FizzBuzz was created from adding Fizz and Buzz in cases where both were true.  Does the additive feature of the string consume more time than just setting a string?
-// 	3 - output.length<1 is used as a means of checking if output had been set to fizz, buzz, or fizzbuzz.  Does measurement of length of a string cost substantially more time? 
+// 	3 - output.length<1 is used as a means of checking if output had been set to fizz, buzz, or fizzbuzz.  Does measurement of length of a string cost substantially more time?  Added fizzBuzz4 to test this hypothesis.  Results (below) suggest that the use of 	if((i%3 !==5) && (i%5 !== 0)) is much more efficient than output.length<1 to test whether i is not fizz-worthy, buzz-worth, or fizzbuzz-worthy 
+
+// { timetrial0: 425,
+//   timetrial1: 400,
+//   timetrial2: 498,
+//   timetrial3: 637,
+//   timetrial4: 379 }
+// hermes@alchemist:~/coding/training_and_meetups/algorithms/algorithm_portfolio/math$ node fizzbuzz.js
+// { timetrial0: 425,
+//   timetrial1: 390,
+//   timetrial2: 506,
+//   timetrial3: 638,
+//   timetrial4: 378 }
+// hermes@alchemist:~/coding/training_and_meetups/algorithms/algorithm_portfolio/math$ node fizzbuzz.js
+// { timetrial0: 425,
+//   timetrial1: 375,
+//   timetrial2: 493,
+//   timetrial3: 695,
+//   timetrial4: 378 }
+// hermes@alchemist:~/coding/training_and_meetups/algorithms/algorithm_portfolio/math$ node fizzbuzz.js
+// { timetrial0: 503,
+//   timetrial1: 423,
+//   timetrial2: 585,
+//   timetrial3: 748,
+//   timetrial4: 432 }
+// hermes@alchemist:~/coding/training_and_meetups/algorithms/algorithm_portfolio/math$ node fizzbuzz.js
+// ^[[A{ timetrial0: 426,
+//   timetrial1: 376,
+//   timetrial2: 510,
+//   timetrial3: 676,
+//   timetrial4: 402 }
+// hermes@alchemist:~/coding/training_and_meetups/algorithms/algorithm_portfolio/math$ node fizzbuzz.js
+// { timetrial0: 497,
+//   timetrial1: 428,
+//   timetrial2: 570,
+//   timetrial3: 760,
+//   timetrial4: 435 }
+// hermes@alchemist:~/coding/training_and_meetups/algorithms/algorithm_portfolio/math$ node fizzbuzz.js
+// { timetrial0: 500,
+//   timetrial1: 453,
+//   timetrial2: 573,
+//   timetrial3: 751,
+//   timetrial4: 433 }
+// hermes@alchemist:~/coding/training_and_meetups/algorithms/algorithm_portfolio/math$ node fizzbuzz.js
+// { timetrial0: 498,
+//   timetrial1: 427,
+//   timetrial2: 570,
+//   timetrial3: 746,
+//   timetrial4: 436 }
+// hermes@alchemist:~/coding/training_and_meetups/algorithms/algorithm_portfolio/math$ node fizzbuzz.js
+// { timetrial0: 496,
+//   timetrial1: 427,
+//   timetrial2: 579,
+//   timetrial3: 768,
+//   timetrial4: 436 }
+// hermes@alchemist:~/coding/training_and_meetups/algorithms/algorithm_portfolio/math$ node fizzbuzz.js
+// { timetrial0: 430,
+//   timetrial1: 374,
+//   timetrial2: 568,
+//   timetrial3: 634,
+//   timetrial4: 394 }
