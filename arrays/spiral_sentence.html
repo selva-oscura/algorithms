@@ -1,8 +1,41 @@
 <html>
-<head>
-	<title>Spiral Sentence</title>
-</head>
-<body>
-<div id="container"></div>
-</body>
+	<head>
+		<title>Spiral Sentence</title>
+	</head>
+	<body>
+		<div id="container"></div>
+		<script type="text/javascript">
+			function createSpiralArray(str){
+				//set size of grid (array)
+				console.log(str.length);
+				var col;
+				var row;
+				var stringLengthSqrt = Math.ceil(Math.sqrt(str.length));
+				console.log(stringLengthSqrt);
+				if(stringLengthSqrt>10){
+					col = 10; 
+					row = Math.ceil(str.length/10);
+				}else{
+					col = stringLengthSqrt;
+					row = stringLengthSqrt
+				}
+				console.log(row, col);
+				var top = 0;
+				var bottom = row-1;
+				var left = 0;
+				var right = col-1;
+				var dir = 0;
+				var result ="";
+				var i;
+				var arr = [];
+				var s = 0;
+				for(var i = 0; i<row;i++){
+					var sub = [];
+					arr.push(sub);
+				}
+			}
+			var str = "The weather is getting warmer these days."
+			console.log(createSpiralArray(str));
+		</script>
+	</body>
 </html>
