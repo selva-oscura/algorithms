@@ -2,6 +2,9 @@
 	<head>
 		<title>Spiral Sentence</title>
 		<style>
+			*{
+				box-sizing:border-box;
+			}
 			table{
 				width: 100%;
 				font-size: 1.2em;
@@ -11,6 +14,33 @@
 			}
 			td{
 				padding: 2px 8px;
+			}
+
+			@media all and (min-width : 600px){
+				table{
+					width: 100%;
+					font-size: 1.5em;
+					text-align: center;
+					margin: 72px 0px;
+					border-collapse: collapse;
+				}
+				td{
+					padding: 18px 12px;
+				}
+
+			}
+			@media all and (min-width : 1000px){
+				table{
+					width: 80%;
+					font-size: 2em;
+					text-align: center;
+					margin: 72px auto;
+					border-collapse: collapse;
+				}
+				td{
+					padding: 36px 18px;
+				}
+
 			}
 		</style>
 	</head>
@@ -123,6 +153,7 @@
 			var str2 = "Cat ipsum dolor sit amet, hunt anything that moves or hopped up on goofballs hide when guests come over. Hide when guests come over intrigued by the shower, or stare at ceiling climb leg for stretch and use lap as chair. Hunt anything that moves, flop over, leave dead animals as gifts, chase imaginary bugs, chase mice, stare at ceiling, and run around and around and around in circles, chasing after the laser while hopped up on catnip."
 			var spiral = createSpiralArray(str2);
 			document.getElementById('container2').innerHTML = createSpiralTable(spiral);
+
 		</script>
 	</body>
 </html>
