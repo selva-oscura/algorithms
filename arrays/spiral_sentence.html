@@ -2,8 +2,9 @@
 	<head>
 		<title>Spiral Sentence</title>
 		<style>
+			/*default lay-out*/
 			*{
-				box-sizing:border-box;
+				box-sizing: border-box;
 			}
 			table{
 				width: 100%;
@@ -15,7 +16,20 @@
 			td{
 				padding: 2px 8px;
 			}
-
+			/*borders for the spiral*/
+			.top{
+				border-top: solid black 3px;
+			}
+			.right{
+				border-right: solid black 3px;
+			}
+			.bottom{
+				border-bottom: solid black 3px;
+			}
+			.left{
+				border-left: solid black 3px;
+			}
+			/*some basic responsiveness*/
 			@media all and (min-width : 600px){
 				table{
 					width: 100%;
@@ -40,11 +54,11 @@
 				td{
 					padding: 36px 18px;
 				}
-
 			}
 		</style>
 	</head>
 	<body>
+		<!-- divs to which the tables will be added -->
 		<div id="container1"></div>
 		<div id="container2"></div>
 
@@ -78,40 +92,72 @@
 				}
 			 	while((top <= bottom) && (left <= right)){
 			 		if(dir === 0){
+						// populate from left to right (along top)
 			 			for (var i = left; i<= right; i++){
+			 				// specify borders
+			 				var border = "top";
+			 				if(i === right){
+			 					border += " right";
+			 				}
+		 					// specify character (text), the number for calculating the hsla (number), and borders to display (border)
 			 				arr[top][i] = {
-			 					text: str[s],
-			 					number: s
+			 					"text": str[s],
+			 					"number": s, 
+			 					"border": border
 			 				}
 			 				s++;
 			 			}
 			 			top++;
 			 			dir = 1;
 			 		}else if(dir === 1){
+			 			// populate from top to bottom (on right side)
 			 			for (var i = top; i<= bottom; i++){
+			 				// specify borders
+			 				var border = "right";
+			 				if(i === bottom){
+			 					border += " bottom";
+			 				}
+		 					// specify character (text), the number for calculating the hsla (number), and borders to display (border)
 			 				arr[i][right] = {
-			 					text: str[s],
-			 					number: s
+			 					"text": str[s],
+			 					"number": s, 
+			 					"border": border
 			 				}
 			 				s++;
 			 			}
 			 			right--;
 			 			dir = 2;
 			 		}else if (dir === 2){
+			 			// populate from right to left (along bottom)
 			 			for (var i = right ; i>=left; i--){
+			 				// specify borders
+			 				var border = "bottom";
+			 				if(i === left){
+			 					border += " left";
+			 				}
+		 					// specify character (text), the number for calculating the hsla (number), and borders to display (border)
 			 				arr[bottom][i] = {
-			 					text: str[s],
-			 					number: s
+			 					"text": str[s],
+			 					"number": s, 
+			 					"border": border
 			 				}
 			 				s++;
 			 			}
 			 			bottom--;
 			 			dir = 3;
 			 		}else if(dir === 3){
+			 			// populate from bottom to top (on left side)
 			 			for (var i = bottom; i>=top; i--){
+			 				// specify borders
+			 				var border = "left";
+			 				if(i === top){
+			 					border += " top";
+			 				}
+		 					// specify character (text), the number for calculating the hsla (number), and borders to display (border)
 			 				arr[i][left] = {
-			 					text: str[s],
-			 					number: s
+			 					"text": str[s],
+			 					"number": s, 
+			 					"border": border
 			 				}
 			 				s++;
 			 			}
@@ -119,6 +165,7 @@
 			 			dir = 0;
 			 		}
 			 	}
+			 	// checking array looks right
 			 	// for(var i = 0; i< arr.length; i++){
 			 	// 	console.log(arr[i]);
 			 	// }
@@ -132,7 +179,7 @@
 			 	for(var i = 0; i<row; i++){
 			 		html+="<tr>";
 			 		for(var j = 0; j<col;j++){
-				 			html+="<td style='background-color:hsla("+Math.floor(360 * arr[i][j].number / (col*row))+", 100%, 50%, .66)'>";
+				 		html+="<td style='background-color:hsla("+Math.floor(360 * arr[i][j].number / (col*row))+", 100%, 50%, .66)' class='"+arr[i][j].border+"'>";
 			 			if(arr[i][j].text!==undefined){
 			 				html+=arr[i][j].text;
 			 			}else{
