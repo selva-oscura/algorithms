@@ -99,6 +99,9 @@
 			 				if(i === right){
 			 					border += " right";
 			 				}
+		 					if(top===bottom){
+		 						border += " bottom";
+		 					}
 		 					// specify character (text), the number for calculating the hsla (number), and borders to display (border)
 			 				arr[top][i] = {
 			 					"text": str[s],
@@ -117,6 +120,9 @@
 			 				if(i === bottom){
 			 					border += " bottom";
 			 				}
+		 					if(left===right){
+		 						border += " left";
+		 					}
 		 					// specify character (text), the number for calculating the hsla (number), and borders to display (border)
 			 				arr[i][right] = {
 			 					"text": str[s],
@@ -135,6 +141,9 @@
 			 				if(i === left){
 			 					border += " left";
 			 				}
+		 					if(top===bottom){
+		 						border += " top";
+		 					}
 		 					// specify character (text), the number for calculating the hsla (number), and borders to display (border)
 			 				arr[bottom][i] = {
 			 					"text": str[s],
@@ -153,6 +162,9 @@
 			 				if(i === top){
 			 					border += " top";
 			 				}
+		 					if(left===right){
+		 						border += " right";
+		 					}
 		 					// specify character (text), the number for calculating the hsla (number), and borders to display (border)
 			 				arr[i][left] = {
 			 					"text": str[s],
