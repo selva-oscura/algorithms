@@ -16,7 +16,10 @@
 
 	</head>
 	<body>
-		<div id="container1-1"></div>
+		<div id="container1"></div>
+		<div id="container2"></div>
+		<div id="container2-1"></div>
+		<div id="container2-2"></div>
 		<script type="text/javascript">
 			function createSpiralArray(str){
 				// set size of grid (array)
@@ -82,7 +85,6 @@
 			 	return arr;
 			}
 
-
 			var createSpiralTable = function(arr){
 			 	var html = "<table>";
 			 	var row = arr.length;
@@ -105,7 +107,10 @@
 
 			var str = "The weather is getting warmer these days."
 			var spiral = createSpiralArray(str);
-			document.getElementById('container1-1').innerHTML = createSpiralTable(spiral);
+			document.getElementById('container1').innerHTML = createSpiralTable(spiral);
+			var str2 = "Cat ipsum dolor sit amet, hunt anything that moves or hopped up on goofballs hide when guests come over. Hide when guests come over intrigued by the shower, or stare at ceiling climb leg for stretch and use lap as chair. Hunt anything that moves, flop over, leave dead animals as gifts, chase imaginary bugs, chase mice, stare at ceiling, and run around and around and around in circles, chasing after the laser while hopped up on catnip."
+			var spiral = createSpiralArray(str2);
+			document.getElementById('container2').innerHTML = createSpiralTable(spiral);
 		</script>
 	</body>
 </html>
