@@ -13,13 +13,11 @@
 				padding: 2px 8px;
 			}
 		</style>
-
 	</head>
 	<body>
 		<div id="container1"></div>
 		<div id="container2"></div>
-		<div id="container2-1"></div>
-		<div id="container2-2"></div>
+
 		<script type="text/javascript">
 			function createSpiralArray(str){
 				// set size of grid (array)
@@ -27,7 +25,7 @@
 				var col;
 				var row;
 				var stringLengthSqrt = Math.ceil(Math.sqrt(str.length));
-				console.log(stringLengthSqrt);
+				// console.log(stringLengthSqrt);
 				if(stringLengthSqrt>15){
 					col = 15; 
 					row = Math.ceil(str.length/15);
@@ -48,40 +46,52 @@
 					var sub = [];
 					arr.push(sub);
 				}
-			 	while((top <= bottom) && (left <= right) && (s<str.length)){
+			 	while((top <= bottom) && (left <= right)){
 			 		if(dir === 0){
 			 			for (var i = left; i<= right; i++){
-			 				arr[top][i] = str[s];
+			 				arr[top][i] = {
+			 					text: str[s],
+			 					number: s
+			 				}
 			 				s++;
 			 			}
 			 			top++;
 			 			dir = 1;
 			 		}else if(dir === 1){
 			 			for (var i = top; i<= bottom; i++){
-			 				arr[i][right] = str[s];
+			 				arr[i][right] = {
+			 					text: str[s],
+			 					number: s
+			 				}
 			 				s++;
 			 			}
 			 			right--;
 			 			dir = 2;
 			 		}else if (dir === 2){
 			 			for (var i = right ; i>=left; i--){
-			 				arr[bottom][i] = str[s];
+			 				arr[bottom][i] = {
+			 					text: str[s],
+			 					number: s
+			 				}
 			 				s++;
 			 			}
 			 			bottom--;
 			 			dir = 3;
 			 		}else if(dir === 3){
 			 			for (var i = bottom; i>=top; i--){
-			 				arr[i][left] = str[s];
+			 				arr[i][left] = {
+			 					text: str[s],
+			 					number: s
+			 				}
 			 				s++;
 			 			}
 			 			left++; 
 			 			dir = 0;
 			 		}
 			 	}
-			 	for(var i = 0; i< arr.length; i++){
-			 		console.log(arr[i]);
-			 	}
+			 	// for(var i = 0; i< arr.length; i++){
+			 	// 	console.log(arr[i]);
+			 	// }
 			 	return arr;
 			}
 
@@ -92,10 +102,11 @@
 			 	for(var i = 0; i<row; i++){
 			 		html+="<tr>";
 			 		for(var j = 0; j<col;j++){
-			 			html+="<td>";
-			 			if(arr[i][j]!==undefined){
-
-			 				html+=arr[i][j];
+				 			html+="<td style='background-color:hsla("+Math.floor(360 * arr[i][j].number / (col*row))+", 100%, 50%, .66)'>";
+			 			if(arr[i][j].text!==undefined){
+			 				html+=arr[i][j].text;
+			 			}else{
+			 				html+="&nbsp;";
 			 			}
 			 			html+="</td>";
 			 		}
@@ -108,6 +119,7 @@
 			var str = "The weather is getting warmer these days."
 			var spiral = createSpiralArray(str);
 			document.getElementById('container1').innerHTML = createSpiralTable(spiral);
+
 			var str2 = "Cat ipsum dolor sit amet, hunt anything that moves or hopped up on goofballs hide when guests come over. Hide when guests come over intrigued by the shower, or stare at ceiling climb leg for stretch and use lap as chair. Hunt anything that moves, flop over, leave dead animals as gifts, chase imaginary bugs, chase mice, stare at ceiling, and run around and around and around in circles, chasing after the laser while hopped up on catnip."
 			var spiral = createSpiralArray(str2);
 			document.getElementById('container2').innerHTML = createSpiralTable(spiral);
