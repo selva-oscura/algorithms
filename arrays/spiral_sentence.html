@@ -1,20 +1,9 @@
 <html>
 	<head>
 		<title>Spiral Sentence</title>
-		<style>
-			table{
-				width: 100%;
-				font-size: 2em;
-				text-align: center;
-			}
-			td{
-				padding: 24px;
-			}
-		</style>
-
 	</head>
 	<body>
-		<div id="container"></div>
+		<div id="container1-1"></div>
 		<script type="text/javascript">
 			function createSpiralArray(str){
 				// set size of grid (array)
@@ -79,8 +68,31 @@
 			 	}
 			 	return arr;
 			}
+
+
+			var createSpiralTable = function(arr){
+			 	var html = "<table>";
+			 	var row = arr.length;
+			 	var col = arr[0].length;
+			 	for(var i = 0; i<row; i++){
+			 		html+="<tr>";
+			 		for(var j = 0; j<col;j++){
+			 			html+="<td>";
+			 			if(arr[i][j]!==undefined){
+
+			 				html+=arr[i][j];
+			 			}
+			 			html+="</td>";
+			 		}
+			 		html+="</tr>";
+			 	}
+			 	html+="</table>";
+			 	return html;
+			 }
+
 			var str = "The weather is getting warmer these days."
 			var spiral = createSpiralArray(str);
+			document.getElementById('container1-1').innerHTML = createSpiralTable(spiral);
 		</script>
 	</body>
 </html>
