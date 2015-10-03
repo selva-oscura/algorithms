@@ -34,6 +34,7 @@ var permutateString = function(str){
 	return permString(str, prefix);
 }
 
+console.log("permutateString (for a given string, print all permutations of its constituent letters)")
 var string = "abc";
 var string2 = "abcd";
 var string_dup = "abb";
@@ -46,3 +47,36 @@ console.log(permutateString(string_dup));
 console.log(permutateString(string_dup2));
 console.log(permutateString(string_dup3));
 console.log(permutateString(string_dup4));
+
+
+
+// merge two strings, keeping each string's members in their original order (e.g. merging '12' and 'ab' can result in 12ab, 1a2b, 1ab2, ab12, a1b2, and a12b, but could not result in 21ab because the original order of 1 then 2 is not retained)
+
+
+var randomZip = function(a, b){
+	var count = 0;
+	var output = [];
+	var prefix ="";
+	var aPointer = 0;
+	var bPointer = 0;
+	var randZip = function(a, b, aPointer, bPointer, prefix){
+		if(aPointer === a.length){
+			output.push(prefix+b.slice(bPointer, b.length));
+			count++;
+			return;
+		}
+		if(bPointer === b.length){
+			output.push(prefix+a.slice(aPointer, a.length));
+			count++;
+			return;
+		}
+		randZip(a, b, aPointer+1, bPointer, prefix+a[aPointer]);
+		randZip(a, b, aPointer, bPointer+1, prefix+b[bPointer]);
+		return {permutations: output, count: count};
+	}
+	return randZip (a,b,aPointer, bPointer, prefix);
+}
+
+console.log("randomZip (merge two strings, keeping each string's members in their original order )")
+console.log('string1: 12', ', string2: ab', randomZip('12', 'ab'))
+console.log('string1: abc', ', string2: 123', randomZip('abc', '123'));
