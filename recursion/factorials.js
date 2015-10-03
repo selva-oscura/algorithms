@@ -10,7 +10,7 @@ var iteratedFactorial = function (n){
 		}
 		return output;
 	}
-	return "input must be an integer greater than or equal to 1";
+	return "input must be an integer greater than or equal to 0";
 }
 
 console.log(iteratedFactorial(2));
@@ -32,7 +32,7 @@ var recursiveFactorial = function(n){
 		}
 		return n*recursiveFactorial(n-1);
 	}
-	return "input must be an integer greater than or equal to 1";
+	return "input must be an integer greater than or equal to 0";
 }
 
 console.log(recursiveFactorial(2));
