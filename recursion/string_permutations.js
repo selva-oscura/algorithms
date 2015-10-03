@@ -51,6 +51,13 @@ console.log(permutateString(string_dup4));
 
 
 // merge two strings, keeping each string's members in their original order (e.g. merging '12' and 'ab' can result in 12ab, 1a2b, 1ab2, ab12, a1b2, and a12b, but could not result in 21ab because the original order of 1 then 2 is not retained)
+// Basic insight: not really permutating as in the above example. Instead we are building the various outputs by switching between the first (not yet used) character in string 1 and the first (not yet used) character in string 2.
+
+// Time complexity:
+//		(string1.length + string2.length) ! / ((string1.length)! * (string2.length)!)
+// Space complexity:
+//		(string1.length + string2.length) ! / ((string1.length)! * (string2.length)!)
+// Example: string1 = abcd, string2 = 123 => 7!/(4!*3!) = 35 computations and 35 strings in the outputted array
 
 
 var randomZip = function(a, b){
@@ -80,3 +87,4 @@ var randomZip = function(a, b){
 console.log("randomZip (merge two strings, keeping each string's members in their original order )")
 console.log('string1: 12', ', string2: ab', randomZip('12', 'ab'))
 console.log('string1: abc', ', string2: 123', randomZip('abc', '123'));
+console.log('string1: abcd', ', string2: 123', randomZip('abcd', '123'));
