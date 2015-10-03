@@ -3,11 +3,14 @@
 // Iteration variant of factorial
 
 var iteratedFactorial = function (n){
-	var output = 1;
-	for(var i = 1; i<=n; i++){
-		output *= i;
+	if(n === Number(n) && n>0 && n%1===0){	
+		var output = 1;
+		for(var i = 1; i<=n; i++){
+			output *= i;
+		}
+		return output;
 	}
-	return output;
+	return "input must be an integer greater than or equal to 1"
 }
 
 console.log(iteratedFactorial(2));
@@ -15,3 +18,8 @@ console.log(iteratedFactorial(4));
 console.log(iteratedFactorial(8));
 console.log(iteratedFactorial(13));
 console.log(iteratedFactorial(27));
+console.log(iteratedFactorial(0));
+console.log(iteratedFactorial(1.2));
+console.log(iteratedFactorial(-4));
+console.log(iteratedFactorial('abc'));
+console.log(iteratedFactorial({a:'abc'}));
