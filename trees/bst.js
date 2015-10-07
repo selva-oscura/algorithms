@@ -94,6 +94,23 @@ BST.prototype = {
 		var output=k + " not found";
 		// console.log(output);
 		return output;
+	},
+	//return node in mirrored format
+	mirror: function(root){
+		if(root===undefined){
+			var root = this.root;
+		}
+		console.log('reversing children of ', root.value);
+		var temp = root.left;
+		root.left = root.right;
+		root.right = temp;
+		if(root.left!==null){
+			this.mirror(root.left);
+		}
+		if(root.right!==null){
+			this.mirror(root.right);
+		}
+		return root;
 	}
 }
 
@@ -142,3 +159,12 @@ console.log(myBst.returnNodeK(3));
 //returning node with value 4 from the bst
 console.log('\nreturning node with value 4 from the bst')
 console.log(myBst.returnNodeK(4));
+
+
+// mirroring myBST
+console.log('\nreadInOrder myBST before mirroring')
+myBst.readInOrder();
+console.log('\nmirroring myBST')
+myBst.mirror();
+console.log('\nreadInOrder myBST after mirroring')
+myBst.readInOrder();
