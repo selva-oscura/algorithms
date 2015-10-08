@@ -75,6 +75,8 @@ var root3 = {
 	}
 }
 
+
+
 function readInOrder(root){
 	if(root===undefined){
 		return false;
@@ -129,4 +131,3 @@ console.log('isBST?', isBST(root2));
 console.log('\nintended fail\nreadInOrder:');
 readInOrder(root3);
 console.log('isBST?', isBST(root3));
-
