@@ -1,4 +1,6 @@
-
+// isBalancedBreadthFirst 
+	// space complexity is initially approximately linear to size of tree, though diminishing as ititerates (due to ignoring parent nodes as it proceeds down the generations)
+	// time complexity is linear to number of nodes for a balanced tree since it will be checking each node, but  somewhat shorter with unbalanced tree, due to early bailout once it finds that there were missing children in the previous generation and children in the next generation (in other words, if previous generation had missing children and the current generation nodes have children => difference in depth > 1)
 
 var balancedDense = {
 	value: 8,
