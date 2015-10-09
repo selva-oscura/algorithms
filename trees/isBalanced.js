@@ -117,17 +117,12 @@ function isBalancedBreadthFirst(roots, lastGenHadChildlessNodes){
 	for(root in roots){
 		console.log('current', roots[root].value);
 		if(roots[root].left!==undefined){
-			console.log('left', roots[root].left.value);
 			nextRoots.push(roots[root].left);
-		}else{
-			console.log('left -- NONE');
-			var thisGenHasChildlessNodes = true;
 		}
 		if(roots[root].right!==undefined){
-			console.log('right', roots[root].right.value);
 			nextRoots.push(roots[root].right);
-		}else{
-			console.log('right -- NONE');
+		}
+		if(roots[root].left===undefined || roots[root].right===undefined){
 			var thisGenHasChildlessNodes = true;
 		}
 	}
@@ -153,3 +148,33 @@ console.log('\nisBalanced?', isBalancedBreadthFirst(unbalanced1));
 
 console.log('\nINTENDED FAIL');
 console.log('\nisBalanced?', isBalancedBreadthFirst(unbalanced2));
+
+
+function isBalancedDepthFirst(root){
+	var depth = function(root){
+		if(root === undefined){
+			return -1;
+		}
+		return (Math.max(depth(root.left), depth(root.right)+1));
+	}
+	if(root === undefined){
+		return true;
+	}
+	if(Math.abs(depth(root.left) - depth(root.right))>1){
+		return false;
+	}
+	return isBalancedDepthFirst(root.left) && isBalancedDepthFirst(root.right);
+}
+
+console.log('\ndepth-first test if binary tree is balanced (function isBalancedDepthFirst)');
+console.log('\nINTENDED PASS');
+console.log('\nisBalanced?', isBalancedDepthFirst(balancedDense));
+
+console.log('\nINTENDED PASS');
+console.log('\nisBalanced?', isBalancedDepthFirst(balancedOpen));
+
+console.log('\nINTENDED FAIL');
+console.log('\nisBalanced?', isBalancedDepthFirst(unbalanced1));
+
+console.log('\nINTENDED FAIL');
+console.log('\nisBalanced?', isBalancedDepthFirst(unbalanced2));
