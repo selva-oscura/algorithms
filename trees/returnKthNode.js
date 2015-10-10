@@ -1,3 +1,9 @@
+// findKthNode returns the kth node from the node passed to the function.  If bad data is passed or if the number of values in the node is less than k, the return value is false
+// space complexity: O(1) -- for the counter on the number of values from the first to the kth
+//    	return value is the node (and its constituent nodes)
+// time complexity: not quite sure how to state this -- worst case is the total number of values in the initial node tree; best case is k plus however many nodes needed to be navigated to get to those values (logn + k?)
+
+
 var aNode = {
 	value: 8,
 	left: {
@@ -30,8 +36,8 @@ function findKthNode(root, k){
 		if(root.left!==undefined){
 			returnKthNode(root.left, k);
 		}
-		arr.push(root.value);
-		if(arr.length===k){
+		counter++;
+		if(counter===k){
 			return root;
 		}
 		if(root.right!==undefined){
@@ -42,9 +48,9 @@ function findKthNode(root, k){
 	if(root===undefined || typeof root !='object' || k===undefined || typeof k != 'number' || k <1){
 		return false;
 	}
-	var arr=[];
+	var counter=0;
 	var output = returnKthNode(root,k);
-	if(k>arr.length){
+	if(k>counter){
 		return false;
 	}
 	return output;
