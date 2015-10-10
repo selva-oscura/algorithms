@@ -64,7 +64,7 @@ BST.prototype = {
 		}
 
 	},
-	//read BST in PreOrder (C, L, R)
+	//read BST in PostOrder (L, R, C)
 	readPostOrder:function(root){
 		if(root==undefined){
 			var root = this.root;
