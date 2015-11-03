@@ -40,3 +40,27 @@ function insertionSortFull(arr){
 console.log('output:',insertionSortFull([1, 4, 3, 5, 6, 2]));
 console.log('output:',insertionSortFull([1, 10, 4, 3, 5, 6, 2, -8, 2]));
 
+
+// Given String Input, sort the numbers in the string -- input are space-separated numbers
+
+function insertionSortFullString(str){
+	console.log(str);
+	var arr = str.split(" ");
+	// convert string to number
+	arr = arr.map(function(x){ return Number(x) });
+	for(var i = 1; i<arr.length; i++){
+		var temp = arr[i];
+		var pointer = i;
+		while(arr[pointer-1]>temp && pointer>0){
+			arr[pointer] = arr[pointer-1];
+			pointer--;
+			// console.log(arr);
+		}
+		arr[pointer] = temp;
+		console.log(arr);
+	}
+	console.log(arr);
+	return arr;
+}
+
+console.log('output:',insertionSortFullString("8 4 23 3 91 5 6 89 2 3 9 12 -1 10 1"));
