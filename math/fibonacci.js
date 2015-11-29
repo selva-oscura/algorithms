@@ -21,3 +21,21 @@ function fibonacci(n){
 for(var i = 0; i<=20; i++){
 	console.log('fibonacci number', i+', using fibonacci function:', fibonacci(i));
 }
+
+
+// recursive approach -- convenient, but soon the call stack starts to be pretty massive
+function fibonacciRecursion(n){
+	if(n<1){
+		return false;
+	}else if(n < 3){
+		return 1;
+	}else{
+		return fibonacciRecursion(n-1)+fibonacciRecursion(n-2);
+	}
+}
+
+// testing results of three functions
+for(var i = 0; i<=20; i++){
+	console.log('fibonacci number', i+', using fibonacciRecursion:', fibonacciRecursion(i));
+}
+
