@@ -100,3 +100,19 @@ var start = new Date();
 console.log('fibonacciWithDP('+40+'):', fibonacciWithDP(40));
 var end = new Date();
 console.log('time to calculate:', end-start+'ms\n');
+
+// Dropping fibonacciRecursion because of the size of the call stack
+console.log('comparing times to calculate fibonacci number 0 through 5000 for fibonacci and fibonacciWithDP algorithms (dropped fibonacciRecursion because of the size of the call stack)');
+var start = new Date();
+for(var i = 0; i<=5000; i++){
+	fibonacci(i);
+}
+var end = new Date();
+console.log('fibonacci(0) through fibonacci('+Number(i-1)+'):', end-start+'ms');
+
+var start = new Date();
+for(var i = 0; i<=5000; i++){
+	fibonacciWithDP(i);
+}
+var end = new Date();
+console.log('fibonacciWithDP(0) through fibonacciWithDP('+Number(i-1)+'):', end-start+'ms');
