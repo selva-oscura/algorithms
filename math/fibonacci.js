@@ -17,7 +17,7 @@ function fibonacci(n){
 	}
 }
 
-// testing results of three functions
+// testing results of function
 for(var i = 0; i<=20; i++){
 	console.log('fibonacci number', i+', using fibonacci function:', fibonacci(i));
 }
@@ -34,8 +34,27 @@ function fibonacciRecursion(n){
 	}
 }
 
-// testing results of three functions
+// testing results of function
 for(var i = 0; i<=20; i++){
 	console.log('fibonacci number', i+', using fibonacciRecursion:', fibonacciRecursion(i));
 }
 
+
+// dynamic programming approach -- as we loop through, the answer is saved to a look-up table
+function fibonacciWithDP(n){
+	if(n<1){
+		return false;
+	}
+	var answer = new Array(n);
+	answer[0] = 0;
+	answer[1] = 1;
+	for(var i = 2; i<=n; i++){
+		answer[i] = answer[i-1]+answer[i-2];
+	}
+	return answer[n];
+}
+
+// testing results of function
+for(var i = 0; i<=20; i++){
+	console.log('fibonacci number', i+', using fibonacciWithDP:', fibonacciWithDP(i));
+}
