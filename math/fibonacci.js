@@ -85,3 +85,18 @@ console.log('fibonacciWithDP('+30+'):', fibonacciWithDP(30));
 var end = new Date();
 console.log('time to calculate:', end-start+'ms\n');
 
+console.log('comparing times to calculate fibonacci number 40 for all 3 algorithms');
+var start = new Date();
+console.log('fibonacci('+40+'):', fibonacci(40));
+var end = new Date();
+console.log('time to calculate:', end-start+'ms');
+
+var start = new Date();
+console.log('fibonacciRecursion('+40+'):', fibonacciRecursion(40));
+var end = new Date();
+console.log('time to calculate:', end-start+'ms');
+
+var start = new Date();
+console.log('fibonacciWithDP('+40+'):', fibonacciWithDP(40));
+var end = new Date();
+console.log('time to calculate:', end-start+'ms\n');
