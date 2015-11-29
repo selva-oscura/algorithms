@@ -17,11 +17,6 @@ function fibonacci(n){
 	}
 }
 
-// testing results of function
-for(var i = 0; i<=20; i++){
-	console.log('fibonacci number', i+', using fibonacci function:', fibonacci(i));
-}
-
 
 // recursive approach -- convenient, but soon the call stack starts to be pretty massive
 function fibonacciRecursion(n){
@@ -32,11 +27,6 @@ function fibonacciRecursion(n){
 	}else{
 		return fibonacciRecursion(n-1)+fibonacciRecursion(n-2);
 	}
-}
-
-// testing results of function
-for(var i = 0; i<=20; i++){
-	console.log('fibonacci number', i+', using fibonacciRecursion:', fibonacciRecursion(i));
 }
 
 
@@ -54,7 +44,11 @@ function fibonacciWithDP(n){
 	return answer[n];
 }
 
-// testing results of function
+
+
+// testing results of three functions
 for(var i = 0; i<=20; i++){
-	console.log('fibonacci number', i+', using fibonacciWithDP:', fibonacciWithDP(i));
+	console.log('fibonacci number', i+', using\n fibonacci function:', fibonacci(i), '\n fibonacciRecursion:', fibonacciRecursion(i), '\n fibonacciWithDP:', fibonacciWithDP(i));
 }
+
+
