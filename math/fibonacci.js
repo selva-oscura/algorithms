@@ -52,3 +52,36 @@ for(var i = 0; i<=20; i++){
 }
 
 
+// Comparing times
+console.log('\ncomparing times to calculate fibonacci number 20 for all 3 algorithms');
+var start = new Date();
+console.log('fibonacci('+20+'):', fibonacci(20));
+var end = new Date();
+console.log('time to calculate:', end-start+'ms');
+
+var start = new Date();
+console.log('fibonacciRecursion('+20+'):', fibonacciRecursion(20));
+var end = new Date();
+console.log('time to calculate:', end-start+'ms');
+
+var start = new Date();
+console.log('fibonacciWithDP('+20+'):', fibonacciWithDP(20));
+var end = new Date();
+console.log('time to calculate:', end-start+'ms\n');
+
+console.log('comparing times to calculate fibonacci number 30 for all 3 algorithms');
+var start = new Date();
+console.log('fibonacci('+30+'):', fibonacci(30));
+var end = new Date();
+console.log('time to calculate:', end-start+'ms');
+
+var start = new Date();
+console.log('fibonacciRecursion('+30+'):', fibonacciRecursion(30));
+var end = new Date();
+console.log('time to calculate:', end-start+'ms');
+
+var start = new Date();
+console.log('fibonacciWithDP('+30+'):', fibonacciWithDP(30));
+var end = new Date();
+console.log('time to calculate:', end-start+'ms\n');
+
